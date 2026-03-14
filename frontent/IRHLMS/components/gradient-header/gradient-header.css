@@ -1,0 +1,16 @@
+.grad-header { border-radius:var(--radius-lg); padding:24px; margin-bottom:22px; position:relative; overflow:hidden; }
+.grad-header::after { content:''; position:absolute; right:-20px; top:-20px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,0.06); pointer-events:none; }
+.grad-dashboard { background:linear-gradient(135deg,var(--navy),var(--navy-mid)); }
+.grad-recovery  { background:linear-gradient(135deg,#1A6B5A,#2DB89A); }
+.grad-habits    { background:linear-gradient(135deg,#8B4C00,#F59E0B); }
+.grad-learning  { background:linear-gradient(135deg,#3D2478,#7C5CBF); }
+.grad-therapy   { background:linear-gradient(135deg,#7A1230,#E05470); }
+.grad-settings  { background:linear-gradient(135deg,var(--navy),#3A4F60); }
+.grad-physio    { background:linear-gradient(135deg,#1A4D2A,#34A853); }
+.grad-medical   { background:linear-gradient(135deg,#3A3000,var(--gold)); }
+.grad-feedback  { background:linear-gradient(135deg,#0A4A40,#2DB89A); }
+.grad-achieve   { background:linear-gradient(135deg,#4A3000,#EAAC57); }
+.grad-title { font-family:var(--font-display); font-size:26px; font-weight:700; color:#fff; }
+.grad-sub { font-size:13px; color:rgba(255,255,255,0.70); margin-top:6px; }
+.grad-meta { display:flex; gap:16px; margin-top:14px; flex-wrap:wrap; }
+.grad-meta-item { display:flex; align-items:center; gap:6px; font-size:12px; color:rgba(255,255,255,0.80); }

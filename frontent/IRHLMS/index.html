@@ -1,0 +1,739 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light" data-fontsize="md" data-contrast="normal">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="IRHLMS — Injury Recovery & Health Learning Management System for IIT Jodhpur students"/>
+  <title>IRHLMS — Recovery &amp; Growth Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="components/sidebar/sidebar.css">
+  <link rel="stylesheet" href="components/navbar/navbar.css">
+  <link rel="stylesheet" href="components/notification-panel/notification-panel.css">
+  <link rel="stylesheet" href="components/modal/modal.css">
+  <link rel="stylesheet" href="components/gradient-header/gradient-header.css">
+  <link rel="stylesheet" href="components/stat-card/stat-card.css">
+  <link rel="stylesheet" href="components/chart/chart.css">
+  <link rel="stylesheet" href="components/milestone/milestone.css">
+  <link rel="stylesheet" href="components/pomodoro/pomodoro.css">
+  <link rel="stylesheet" href="components/habit-heatmap/habit-heatmap.css">
+</head>
+<body>
+
+<aside class="sidebar" id="app-sidebar" role="navigation" aria-label="Main navigation">
+  <div class="sb-logo">
+    <div class="sb-logo-mark" aria-hidden="true">♿</div>
+    <div>
+      <div class="sb-logo-text">IRHLMS</div>
+      <div class="sb-logo-sub">Recovery &amp; Growth</div>
+    </div>
+  </div>
+  <nav class="sb-nav" aria-label="Sidebar navigation">
+    <div class="sb-section">Overview</div>
+    <button class="sb-item active" data-page="dashboard" aria-current="page">
+      <span class="sb-ico"><img src="assets/svg/dashboard.svg" alt="" width="20" height="20" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--blue)"></div>Dashboard
+    </button>
+    <div class="sb-section" style="margin-top:8px">Recovery</div>
+    <button class="sb-item" data-page="recovery">
+      <span class="sb-ico"><img src="assets/svg/RecoveryTracker.svg" alt="" width="20" height="15" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--teal)"></div>Recovery Tracker
+    </button>
+    <button class="sb-item" data-page="physio">
+      <span class="sb-ico"><img src="assets/svg/pysiotherapy.svg" alt="" width="23" height="23" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--emerald)"></div>Physiotherapy
+    </button>
+    <div class="sb-section" style="margin-top:8px">Academic</div>
+    <button class="sb-item" data-page="learning">
+      <span class="sb-ico"><img src="assets/svg/learninghub.svg" alt="" width="22" height="22" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--violet)"></div>Learning Hub
+    </button>
+    <button class="sb-item" data-page="habits">
+      <span class="sb-ico"><img src="assets/svg/habitmanager.svg" alt="" width="20" height="15" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--amber)"></div>
+      Habit Manager <span class="sb-badge" id="hab-badge" aria-label="habits completed">0</span>
+    </button>
+    <button class="sb-item" data-page="medical">
+      <span class="sb-ico"><img src="assets/svg/medicalrecordds.svg" alt="" width="20" height="20" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--gold)"></div>Medical Records
+    </button>
+    <div class="sb-section" style="margin-top:8px">Support</div>
+    <button class="sb-item" data-page="therapy">
+      <span class="sb-ico"><img src="assets/svg/therapysession.svg" alt="" width="18" height="18" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--rose)"></div>Therapy Sessions
+    </button>
+    <button class="sb-item" data-page="achievements">
+      <span class="sb-ico"><img src="assets/svg/achievement.svg" alt="" width="20" height="20" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--gold)"></div>Achievements
+    </button>
+    <div class="sb-section" style="margin-top:8px">System</div>
+    <button class="sb-item" data-page="feedback">
+      <span class="sb-ico"><img src="assets/svg/feedback.svg" alt="" width="20" height="20" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--teal)"></div>Feedback
+    </button>
+    <button class="sb-item" data-page="settings">
+      <span class="sb-ico"><img src="assets/svg/setting.svg" alt="" width="20" height="20" aria-hidden="true"></span>
+      <div class="sb-dot" style="background:var(--txt3)"></div>Settings
+    </button>
+  </nav>
+  <div class="sb-footer">
+    <div class="sb-user" role="button" tabindex="0" aria-label="User profile">
+      <div class="sb-avatar" aria-hidden="true">YS</div>
+      <div><div class="sb-uname">Yug Suhagiya</div><div class="sb-urole">B24CS1073 · Week 9</div></div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar" role="banner">
+    <div class="tb-left">
+      <h1 class="tb-title" id="tb-title">Dashboard</h1>
+      <div class="tb-sub" id="tb-sub">Loading…</div>
+    </div>
+    <div class="tb-right">
+      <button class="tb-btn" id="notif-trigger" aria-label="Notifications" aria-haspopup="true" aria-expanded="false">
+        <img src="assets/svg/notification.svg" alt="" width="20" height="20" aria-hidden="true">
+      </button>
+      <button class="tb-btn" id="theme-toggle" aria-label="Toggle theme">
+        <img src="assets/svg/theam.svg" alt="" width="20" height="20" aria-hidden="true">
+      </button>
+      <button class="tb-btn" id="settings-btn" data-page="settings" aria-label="Settings">
+        <img src="assets/svg/setting.svg" alt="" width="20" height="20" aria-hidden="true">
+      </button>
+    </div>
+  </header>
+
+  <div class="notif-panel" id="notif-panel" role="dialog" aria-label="Notifications" aria-hidden="true">
+    <div class="np-head">
+      <div class="np-title">Notifications</div>
+      <button class="np-clear" id="notif-clear">Clear all</button>
+    </div>
+    <ul class="np-list" id="notif-list">
+      <li class="np-item"><div class="np-ico ic-gold">🔥</div><div><div class="np-msg">21-day streak milestone reached! +200 bonus points awarded.</div><div class="np-time">2 min ago</div></div></li>
+      <li class="np-item"><div class="np-ico ic-teal">💊</div><div><div class="np-msg">Reminder: Core Stability session at 12:30 PM today.</div><div class="np-time">1 hr ago</div></div></li>
+      <li class="np-item"><div class="np-ico ic-violet">📚</div><div><div class="np-msg">Assignment due: Software Requirements — tomorrow 11:59 PM.</div><div class="np-time">3 hr ago</div></div></li>
+      <li class="np-item"><div class="np-ico ic-rose">🫀</div><div><div class="np-msg">Therapy session with Dr. Mehta confirmed for Thursday.</div><div class="np-time">Yesterday</div></div></li>
+    </ul>
+  </div>
+
+  <!-- PAGE: DASHBOARD -->
+  <div class="page active" id="page-dashboard">
+    <div class="grad-header grad-dashboard">
+      <div class="grad-title">Good morning, Yug 👋</div>
+      <div class="grad-sub">Week 9 of recovery · Keep going — every session counts.</div>
+      <div class="grad-meta">
+        <div class="grad-meta-item"><img src="assets/svg/fire.svg" alt="" width="15" height="15" aria-hidden="true"> <strong>21-day</strong> streak</div>
+        <div class="grad-meta-item"><img src="assets/svg/star.svg" alt="" width="15" height="15" aria-hidden="true"> <strong>1,840</strong> points</div>
+        <div class="grad-meta-item"><img src="assets/svg/RecoveryTracker.svg" alt="" width="15" height="15" aria-hidden="true"> <strong>72%</strong> recovery progress</div>
+        <div class="grad-meta-item"><img src="assets/svg/learninghub.svg" alt="" width="20" height="20" aria-hidden="true"> <strong>3</strong> courses active</div>
+      </div>
+    </div>
+    <div class="grid-4" style="margin-bottom:20px">
+      <div class="stat-card"><div><div class="stat-lbl">Recovery Score</div><div class="stat-val">72<span style="font-size:16px;color:var(--txt3)">%</span></div><div class="stat-sub">↑ 5% this week</div></div><div class="stat-ico ic-teal"><img src="assets/svg/RecoveryTracker.svg" alt="" width="20" height="20" aria-hidden="true"></div></div>
+      <div class="stat-card"><div><div class="stat-lbl">Habit Streak</div><div class="stat-val">21</div><div class="stat-sub">Personal best!</div></div><div class="stat-ico ic-amber"><img src="assets/svg/streak.svg" alt="" width="20" height="20" aria-hidden="true"></div></div>
+      <div class="stat-card"><div><div class="stat-lbl">Avg GPA</div><div class="stat-val">8.4</div><div class="stat-sub">3 courses tracked</div></div><div class="stat-ico ic-violet"><img src="assets/svg/gpa.svg" alt="" width="20" height="20" aria-hidden="true"></div></div>
+      <div class="stat-card"><div><div class="stat-lbl">Sessions Done</div><div class="stat-val">18</div><div class="stat-sub">This month</div></div><div class="stat-ico ic-rose"><img src="assets/svg/therapysession.svg" alt="" width="20" height="20" aria-hidden="true"></div></div>
+    </div>
+    <div class="grid-2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Weekly Recovery</div><div class="card-sub">Exercise completion %</div></div><span class="badge badge-teal">This Month</span></div>
+        <div class="card-pad"><div class="bar-chart" id="recovery-chart" aria-label="Weekly recovery chart"></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Today's Habits</div><div class="card-sub">Completion breakdown</div></div><span class="badge badge-amber" id="hab-pct-badge">0%</span></div>
+        <div class="card-pad" style="display:flex;align-items:center;gap:24px">
+          <div class="donut" id="dash-donut" aria-label="Habit completion donut" style="background:conic-gradient(var(--amber) 0%, var(--border) 0%)">
+            <div class="donut-inner"><div class="donut-val" id="donut-val">0</div><div class="donut-sub">of <span id="donut-tot">9</span></div></div>
+          </div>
+          <div style="flex:1"><div id="hab-legend" style="display:flex;flex-direction:column;gap:8px"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Quick Actions</div></div>
+        <div class="card-pad" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn btn-teal" data-page="physio" style="width:100%;justify-content:center">🏃 Log Physio</button>
+          <button class="btn btn-gold" data-page="habits" style="width:100%;justify-content:center">✅ Track Habits</button>
+          <button class="btn btn-violet" data-page="learning" style="width:100%;justify-content:center">📚 Study Session</button>
+          <button class="btn btn-outline" data-page="therapy" style="width:100%;justify-content:center">🫀 Therapy Log</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Today's Schedule</div><div class="card-sub">3 activities</div></div>
+        <div class="card-pad" style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 12px;background:var(--teal-lt);border-radius:10px;border-left:3px solid var(--teal)"><div style="font-size:12px;font-weight:700;color:var(--teal);width:50px;flex-shrink:0">08:00<div style="font-weight:400;color:var(--txt3)">AM</div></div><div><div style="font-size:13px;font-weight:500;color:var(--txt1)">Leg Strengthening</div><div style="font-size:11px;color:var(--txt3)">Physiotherapy · 45 min ✓</div></div></div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 12px;background:var(--violet-lt);border-radius:10px;border-left:3px solid var(--violet)"><div style="font-size:12px;font-weight:700;color:var(--violet);width:50px;flex-shrink:0">10:00<div style="font-weight:400;color:var(--txt3)">AM</div></div><div><div style="font-size:13px;font-weight:500;color:var(--txt1)">Data Structures</div><div style="font-size:11px;color:var(--txt3)">Study Session · 2 hrs</div></div></div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 12px;background:var(--rose-lt);border-radius:10px;border-left:3px solid var(--rose)"><div style="font-size:12px;font-weight:700;color:var(--rose);width:50px;flex-shrink:0">02:30<div style="font-weight:400;color:var(--txt3)">PM</div></div><div><div style="font-size:13px;font-weight:500;color:var(--txt1)">Dr. Sharma Follow-up</div><div style="font-size:11px;color:var(--txt3)">Therapy · 30 min</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">Recovery Milestones</div><div class="card-sub">Spinal cord injury rehabilitation timeline</div></div>
+      <div class="card-pad">
+        <div class="grid-2">
+          <div class="milestone-track">
+            <div class="milestone-item"><div class="milestone-dot done"></div><div class="milestone-txt">Hospital discharge</div><div class="milestone-date">Dec 15, 2025 ✓</div></div>
+            <div class="milestone-item"><div class="milestone-dot done"></div><div class="milestone-txt">Started physiotherapy</div><div class="milestone-date">Jan 2, 2026 ✓</div></div>
+            <div class="milestone-item"><div class="milestone-dot active"></div><div class="milestone-txt">Independent transfers</div><div class="milestone-date">Target: Mar 15, 2026 — In progress</div></div>
+            <div class="milestone-item"><div class="milestone-dot future"></div><div class="milestone-txt">Return to campus</div><div class="milestone-date">Target: Apr 2026</div></div>
+          </div>
+          <div>
+            <div class="sec-lbl">Overall Progress</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:5px"><span>Mobility</span><span>78%</span></div><div class="prog-bg"><div class="prog-fill" style="width:78%;background:var(--teal)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:5px"><span>Strength</span><span>65%</span></div><div class="prog-bg"><div class="prog-fill" style="width:65%;background:var(--emerald)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:5px"><span>Pain Management</span><span>80%</span></div><div class="prog-bg"><div class="prog-fill" style="width:80%;background:var(--gold)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:5px"><span>Academic Continuity</span><span>72%</span></div><div class="prog-bg"><div class="prog-fill" style="width:72%;background:var(--violet)"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE: RECOVERY -->
+  <div class="page" id="page-recovery">
+    <div class="grad-header grad-recovery">
+      <div class="grad-title">💪 Recovery Tracker</div>
+      <div class="grad-sub">Monitor rehabilitation milestones and physical recovery metrics</div>
+      <div class="grad-meta">
+        <div class="grad-meta-item">📈 <strong>72%</strong> overall recovery</div>
+        <div class="grad-meta-item">📅 <strong>Week 9</strong> of rehabilitation</div>
+        <div class="grad-meta-item">✅ <strong>3/6</strong> milestones done</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Rehabilitation Milestones</div></div>
+        <div class="card-pad">
+          <div class="milestone-track">
+            <div class="milestone-item"><div class="milestone-dot done"></div><div class="milestone-txt">Acute care completed</div><div class="milestone-date">Dec 2025 ✓</div></div>
+            <div class="milestone-item"><div class="milestone-dot done"></div><div class="milestone-txt">PT programme started</div><div class="milestone-date">Jan 2, 2026 ✓</div></div>
+            <div class="milestone-item"><div class="milestone-dot done"></div><div class="milestone-txt">Upper body independence</div><div class="milestone-date">Feb 10, 2026 ✓</div></div>
+            <div class="milestone-item"><div class="milestone-dot active"></div><div class="milestone-txt">Wheelchair transfers — independent</div><div class="milestone-date">Target: Mar 15, 2026 — In progress</div></div>
+            <div class="milestone-item"><div class="milestone-dot future"></div><div class="milestone-txt">Supported standing exercises</div><div class="milestone-date">Target: Apr 2026</div></div>
+            <div class="milestone-item"><div class="milestone-dot future"></div><div class="milestone-txt">Return to campus life</div><div class="milestone-date">Target: May 2026</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Recovery Metrics</div><div class="card-sub">Updated weekly by physiotherapist</div></div>
+        <div class="card-pad" style="display:flex;flex-direction:column;gap:14px">
+          <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:6px"><span>🦾 Upper Limb Strength</span><span style="font-weight:600;color:var(--teal)">82%</span></div><div class="prog-bg"><div class="prog-fill" style="width:82%;background:linear-gradient(90deg,var(--teal),#6DD5C0)"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:6px"><span>🦿 Lower Limb Response</span><span style="font-weight:600;color:var(--emerald)">48%</span></div><div class="prog-bg"><div class="prog-fill" style="width:48%;background:linear-gradient(90deg,var(--emerald),#70D46A)"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:6px"><span>⚖️ Balance &amp; Stability</span><span style="font-weight:600;color:var(--gold)">67%</span></div><div class="prog-bg"><div class="prog-fill" style="width:67%;background:linear-gradient(90deg,var(--gold),var(--gold-lt))"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:6px"><span>🧘 Flexibility / ROM</span><span style="font-weight:600;color:var(--violet)">74%</span></div><div class="prog-bg"><div class="prog-fill" style="width:74%;background:linear-gradient(90deg,var(--violet),#A880F0)"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:6px"><span>😮‍💨 Respiratory Function</span><span style="font-weight:600;color:var(--rose)">91%</span></div><div class="prog-bg"><div class="prog-fill" style="width:91%;background:linear-gradient(90deg,var(--rose),#F08098)"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE: PHYSIO -->
+  <div class="page" id="page-physio">
+    <div class="grad-header grad-physio">
+      <div class="grad-title">🏃 Physiotherapy</div>
+      <div class="grad-sub">Today's exercise plan · 3 sessions scheduled</div>
+      <div class="grad-meta">
+        <div class="grad-meta-item">✓ <strong>2</strong> completed</div>
+        <div class="grad-meta-item">⏳ <strong>1</strong> pending</div>
+        <div class="grad-meta-item">📋 <strong>18</strong> total this month</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Today's Exercise Plan</div><button class="btn btn-outline btn-sm" id="add-physio-btn">+ Add</button></div>
+        <div class="card-pad" id="ex-list">
+          <div class="ex-item done"><div style="display:flex;align-items:center;gap:12px"><div class="ex-check"></div><div><div class="ex-name">Leg Strengthening</div><div class="ex-meta">08:00 AM · 3 × 12 reps · Resistance band</div></div></div></div>
+          <div class="ex-item done"><div style="display:flex;align-items:center;gap:12px"><div class="ex-check"></div><div><div class="ex-name">Core Stability Circuit</div><div class="ex-meta">12:30 PM · Plank 30s × 3 · Bridge 15 × 3</div></div></div></div>
+          <div class="ex-item"><div style="display:flex;align-items:center;gap:12px"><div class="ex-check"></div><div><div class="ex-name">Upper Body Stretch</div><div class="ex-meta">06:00 PM · 20 min flexibility routine</div></div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Weekly Exercise Log</div></div>
+        <div class="card-pad">
+          <div class="bar-chart" id="ex-chart" aria-label="Weekly exercise chart"></div>
+          <div style="margin-top:14px;display:flex;gap:16px">
+            <div><div style="font-size:10px;color:var(--txt3)">This week</div><div style="font-size:20px;font-weight:700;color:var(--emerald)">14</div></div>
+            <div><div style="font-size:10px;color:var(--txt3)">Monthly avg</div><div style="font-size:20px;font-weight:700;color:var(--txt1)">18</div></div>
+            <div><div style="font-size:10px;color:var(--txt3)">Completion rate</div><div style="font-size:20px;font-weight:700;color:var(--emerald)">92%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card physio-log-card">
+      <div class="card-head"><div class="card-title">Log New Session</div></div>
+      <div class="card-pad">
+        <div style="display:grid;grid-template-columns:2fr 1.3fr 1fr;gap:10px">
+          <input class="inp" id="ex-name-inp" placeholder="Exercise name"/>
+          <div class="time-picker" id="ex-time-picker">
+            <input class="inp time-picker-input" id="ex-time-inp" placeholder="hh:mm AM/PM"/>
+            <button class="time-picker-trigger" id="ex-time-trigger" type="button" aria-label="Open time picker">🕒</button>
+            <div class="time-picker-panel" id="ex-time-panel" aria-hidden="true">
+              <div class="time-picker-display" id="ex-time-display">07:00 AM</div>
+              <div class="time-picker-grid">
+                <div class="time-picker-col" id="ex-hour-col"></div>
+                <div class="time-picker-col" id="ex-min-col"></div>
+                <div class="time-picker-col" id="ex-mer-col"></div>
+              </div>
+            </div>
+          </div>
+          <input class="inp" id="ex-desc-inp" placeholder="Sets / reps / duration"/>
+        </div>
+        <div style="font-size:11px;color:var(--txt3);margin:8px 0 10px">Time format: hh:mm AM/PM. You can type manually or select from picker.</div>
+        <button class="btn btn-gold" id="add-ex-btn">Add to Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE: LEARNING HUB -->
+  <div class="page" id="page-learning">
+    <div class="grad-header grad-learning">
+      <div class="grad-title">Learning Hub</div>
+      <div class="grad-sub">Manage courses, assignments, and study sessions</div>
+      <div class="grad-meta">
+        <div class="grad-meta-item">Courses: <strong id="learning-meta-active">0</strong></div>
+        <div class="grad-meta-item">Pending assignments: <strong id="learning-meta-pending">0</strong></div>
+        <div class="grad-meta-item">Avg GPA: <strong id="learning-meta-gpa">0.0</strong></div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-courses">Courses</button>
+      <button class="tab-btn" data-tab="tab-manage">Manage Courses</button>
+      <button class="tab-btn" data-tab="tab-assignments">Assignments</button>
+      <button class="tab-btn" data-tab="tab-timer">Study Timer</button>
+    </div>
+
+    <div id="tab-courses">
+      <div class="courses-summary-grid">
+        <article class="card course-summary-card">
+          <div class="course-summary-icon cs-violet">C</div>
+          <div>
+            <div class="course-summary-label">Active Courses</div>
+            <div class="course-summary-value" id="courses-active-count">0</div>
+          </div>
+        </article>
+        <article class="card course-summary-card">
+          <div class="course-summary-icon cs-gold">G</div>
+          <div>
+            <div class="course-summary-label">Avg GPA</div>
+            <div class="course-summary-value" id="courses-avg-gpa">0.0</div>
+          </div>
+        </article>
+        <article class="card course-summary-card">
+          <div class="course-summary-icon cs-rose">T</div>
+          <div>
+            <div class="course-summary-label">Pending Tasks</div>
+            <div class="course-summary-value" id="courses-pending-tasks">0</div>
+          </div>
+        </article>
+        <article class="card course-summary-card">
+          <div class="course-summary-icon cs-green">CR</div>
+          <div>
+            <div class="course-summary-label">Credits Enrolled</div>
+            <div class="course-summary-value" id="courses-total-credits">0</div>
+          </div>
+        </article>
+      </div>
+      <div class="courses-grid" id="coursesContainer"></div>
+    </div>
+
+    <div id="tab-manage" style="display:none">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Add New Course</div></div>
+          <div class="card-pad" style="display:flex;flex-direction:column;gap:12px">
+            <input class="inp" id="mc-code" placeholder="Course Code (e.g. CSL2090)"/>
+            <input class="inp" id="mc-name" placeholder="Course Title"/>
+            <div style="display:flex;gap:10px">
+              <input class="inp" id="mc-prof" placeholder="Professor" style="flex:1"/>
+              <input class="inp" id="mc-cred" type="number" min="1" max="6" placeholder="Credits" style="width:90px"/>
+            </div>
+            <div style="display:flex;gap:10px">
+              <input class="inp" id="mc-year" placeholder="Year (e.g. B.Tech 2nd Year)" style="flex:1"/>
+              <input class="inp" id="mc-icon" placeholder="Icon (e.g. SE)" style="width:130px"/>
+            </div>
+            <div style="display:flex;gap:10px">
+              <input class="inp" id="mc-progress" type="number" min="0" max="100" placeholder="Progress %" style="flex:1"/>
+              <div id="mc-attendance-wrap" style="flex:1">
+                <input class="inp" id="mc-attendance" type="number" min="0" max="100" placeholder="Attendance % (Completed only)"/>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <select class="sel" id="mc-status" style="flex:1"><option>Active</option><option>In Progress</option><option>Near Complete</option><option>Completed</option></select>
+              <div id="mc-grade-wrap" style="flex:1">
+                <select class="sel" id="mc-grade" style="width:100%"><option>A+</option><option>A</option><option>B+</option><option>B</option><option>C+</option><option>C</option><option>F</option></select>
+              </div>
+            </div>
+            <input class="inp" id="mc-tags" placeholder="Tags comma-separated (e.g. Next: Mar 5, SRS Project)"/>
+            <div style="font-size:11px;color:var(--txt3);margin-top:-4px">Use commas to separate tags.</div>
+            <div style="display:flex;gap:10px">
+              <button class="btn btn-violet" id="add-course-btn" style="flex:1;justify-content:center;padding:11px">+ Add Course</button>
+              <button class="btn btn-outline" id="cancel-edit-course-btn" style="display:none;justify-content:center;padding:11px">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Manage Existing Courses</div></div>
+          <div id="mc-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-assignments" style="display:none">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Assignment Log</div></div>
+          <div class="card-pad" style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <input class="inp" id="asg-title" placeholder="Assignment title" style="flex:1;min-width:180px"/>
+              <input class="inp" id="asg-course" placeholder="Course code (e.g. CSL2060)" style="width:180px"/>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <input class="inp" id="asg-due" type="date" style="width:180px"/>
+              <button class="btn btn-violet" id="add-assignment-btn" style="justify-content:center">+ Add Assignment</button>
+            </div>
+            <div id="learning-assignment-list" class="assignment-list"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Activity Log</div></div>
+          <div class="card-pad assignment-activity" id="learning-assignment-activity"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-timer" style="display:none">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Pomodoro Study Timer</div></div>
+          <div class="card-pad" style="text-align:center">
+            <div class="pomo-ring" id="pomo-ring"><div class="pomo-inner"><div class="pomo-time" id="pomo-time">25:00</div><div class="pomo-lbl" id="pomo-lbl">FOCUS</div></div></div>
+            <div style="display:flex;justify-content:center;gap:10px;margin-bottom:16px">
+              <button class="btn btn-violet btn-sm" id="pomo-start">Start</button>
+              <button class="btn btn-outline btn-sm" id="pomo-reset">Reset</button>
+            </div>
+            <div style="display:flex;justify-content:center;gap:8px">
+              <button class="btn btn-outline btn-sm" data-pomo="25|FOCUS">25m Focus</button>
+              <button class="btn btn-outline btn-sm" data-pomo="5|SHORT BREAK">5m Break</button>
+              <button class="btn btn-outline btn-sm" data-pomo="15|LONG BREAK">15m Break</button>
+            </div>
+            <div style="margin-top:16px;font-size:12px;color:var(--txt3)">Completed today: <strong id="pomo-count" style="color:var(--violet)">0</strong> sessions</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Study Log</div></div>
+          <div class="card-pad" id="study-log" style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:13px;color:var(--txt3);text-align:center;padding:20px">No sessions logged yet. Start the timer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- PAGE: HABITS -->
+  <div class="page" id="page-habits">
+    <div class="grad-header grad-habits">
+      <div class="grad-title">Habit Manager</div>
+      <div class="grad-sub">Track daily consistency with category filters</div>
+      <div class="grad-meta">
+        <div class="grad-meta-item"><strong>All / Medical / Physical / Mental / Academic / Other</strong></div>
+        <div class="grad-meta-item">Sort by category with quick toggles</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-pad">
+        <div id="habit-heatmap"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Today's Habits</div>
+          <div class="card-sub">Sort by category</div>
+        </div>
+        <span class="badge badge-amber" id="hab-page-pct-badge">0%</span>
+      </div>
+      <div class="card-pad">
+        <div class="habit-filter-row" id="habit-filter-row">
+          <button class="habit-filter-btn active" data-habit-filter="all" type="button">All</button>
+          <button class="habit-filter-btn" data-habit-filter="medical" type="button">Medical</button>
+          <button class="habit-filter-btn" data-habit-filter="physical" type="button">Physical</button>
+          <button class="habit-filter-btn" data-habit-filter="mental" type="button">Mental</button>
+          <button class="habit-filter-btn" data-habit-filter="academic" type="button">Academic</button>
+          <button class="habit-filter-btn" data-habit-filter="other" type="button">Other</button>
+        </div>
+        <div id="habits-today-list" class="habit-list"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-head"><div class="card-title">Add Habit</div></div>
+      <div class="card-pad" style="display:flex;gap:10px;flex-wrap:wrap">
+        <select class="sel" id="new-hab-cat" style="min-width:150px">
+          <option value="medical">Medical</option>
+          <option value="physical">Physical</option>
+          <option value="mental" selected>Mental</option>
+          <option value="academic">Academic</option>
+          <option value="other">Other</option>
+        </select>
+        <input class="inp" id="new-hab-inp" placeholder="Add new habit..." style="flex:1;min-width:180px"/>
+        <button class="btn btn-gold" id="add-hab-btn" type="button">+ Add</button>
+      </div>
+    </div>
+  </div>
+  <!-- PAGE: MEDICAL RECORDS -->
+  <div class="page" id="page-medical">
+    <div class="grad-header grad-medical">
+      <div class="grad-title">🗂 Medical Records</div>
+      <div class="grad-sub">Secure storage of medical documents and reports</div>
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:8px;flex:1;background:var(--inp);border:1px solid var(--border);border-radius:9px;padding:9px 14px">
+        <span aria-hidden="true">🔍</span>
+        <input class="inp" style="border:none;background:transparent;padding:0" placeholder="Search records…" id="rec-search" aria-label="Search medical records"/>
+      </div>
+      <button class="btn btn-gold" id="open-rec-form">+ Add Record</button>
+    </div>
+    <div id="rec-form" style="display:none;margin-bottom:20px">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Upload New Record</div></div>
+        <div class="card-pad" style="display:flex;flex-direction:column;gap:10px">
+          <input class="inp" id="rf-name" placeholder="Document name"/>
+          <div style="display:flex;gap:10px">
+            <select class="sel" id="rf-type" style="flex:1"><option value="pdf">PDF</option><option value="img">Image</option><option value="doc">Document</option></select>
+            <input class="inp" id="rf-date" type="date" style="flex:1"/>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-gold" id="save-rec-btn">Save</button>
+            <button class="btn btn-outline" id="close-rec-form">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="rec-wrap"></div>
+  </div>
+
+  <!-- PAGE: THERAPY -->
+  <div class="page" id="page-therapy">
+    <div class="grad-header grad-therapy therapy-hero">
+      <div class="grad-title">🫀 Therapy Sessions</div>
+      <div class="grad-sub">Schedule, notes, and therapist coordination</div>
+      <div class="grad-meta therapy-hero-meta">
+        <div class="grad-meta-item"><span aria-hidden="true">📅</span><strong id="therapy-upcoming-count">0</strong> upcoming sessions</div>
+        <div class="grad-meta-item"><span aria-hidden="true">✓</span><strong id="therapy-completed-count">0</strong> completed total</div>
+      </div>
+    </div>
+    <div class="therapy-grid">
+      <section class="therapy-col" aria-labelledby="therapy-upcoming-heading">
+        <h2 class="sec-lbl" id="therapy-upcoming-heading">Upcoming Sessions</h2>
+        <div class="therapy-stack" id="therapy-sessions-list"></div>
+      </section>
+      <section class="therapy-col" aria-labelledby="therapy-care-team-heading">
+        <div class="therapy-col-head">
+          <h2 class="sec-lbl" id="therapy-care-team-heading">Doctor Info</h2>
+          <button class="btn btn-violet btn-sm" id="therapy-add-doctor-trigger" type="button">+ Add Doctor</button>
+        </div>
+        <div class="card therapy-add-doctor-card" id="therapy-add-doctor-card" style="display:none">
+          <div class="card-head"><div class="card-title">Add New Doctor</div></div>
+          <div class="card-pad therapy-add-doctor-form">
+            <input class="inp" id="therapy-doc-name" placeholder="Doctor Name"/>
+            <input class="inp" id="therapy-doc-spec" placeholder="Specialization"/>
+            <input class="inp" id="therapy-doc-qual" placeholder="Qualification / Description (e.g. AIIMS trained)"/>
+            <input class="inp" id="therapy-doc-initials" maxlength="3" placeholder="Doctor Initials (e.g. PM)"/>
+            <textarea class="inp" id="therapy-doc-notes" rows="3" placeholder="Interaction Notes (meeting notes or communication details)" style="resize:none"></textarea>
+            <div class="therapy-add-doctor-actions">
+              <button class="btn btn-violet" id="therapy-add-doctor-btn" type="button" style="flex:1;justify-content:center;padding:11px">+ Add Doctor</button>
+              <button class="btn btn-outline" id="therapy-cancel-doctor-btn" type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="therapy-stack" id="therapy-care-team-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PAGE: ACHIEVEMENTS -->
+  <div class="page" id="page-achievements">
+    <div class="grad-header grad-achieve">
+      <div class="grad-title">🏆 Achievements</div>
+      <div class="grad-sub">Your recovery and academic milestones</div>
+    </div>
+    <div class="card" style="text-align:center;margin-bottom:20px">
+      <div style="padding:30px">
+        <div style="width:76px;height:76px;border-radius:20px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 14px" aria-hidden="true">🏆</div>
+        <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--txt1)" id="ach-level">Level 1</div>
+        <div style="font-size:13px;color:var(--txt2);margin:4px 0 16px" id="ach-pts">0 total points</div>
+        <div style="max-width:400px;margin:0 auto">
+          <div class="prog-bg" style="height:10px"><div class="prog-fill" id="ach-bar" style="width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-lt));height:100%"></div></div>
+          <div style="font-size:12px;color:var(--txt3);margin-top:8px" id="ach-cap">100 pts to next level</div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-lbl">Badges (<span id="locked-cnt">8</span> locked)</div>
+    <div class="grid-2" id="badges-wrap" style="margin-top:12px"></div>
+  </div>
+
+  <!-- PAGE: FEEDBACK -->
+  <div class="page" id="page-feedback">
+    <div class="grad-header grad-feedback">
+      <div class="grad-title">💬 Feedback</div>
+      <div class="grad-sub">Share your experience and help improve IRHLMS</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Submit Feedback</div></div>
+        <div class="card-pad" style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Category</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap" id="fb-cats">
+              <button class="fb-cat-btn active" data-cat="general">💬 General</button>
+              <button class="fb-cat-btn" data-cat="recovery">💪 Recovery</button>
+              <button class="fb-cat-btn" data-cat="academic">📚 Academic</button>
+              <button class="fb-cat-btn" data-cat="bug">🐛 Bug Report</button>
+              <button class="fb-cat-btn" data-cat="feature">✨ Feature Request</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Type</div>
+            <div style="display:flex;gap:8px">
+              <button class="fb-type-btn active" data-type="positive">👍 Positive</button>
+              <button class="fb-type-btn" data-type="negative">👎 Issue</button>
+              <button class="fb-type-btn" data-type="suggestion">💡 Suggestion</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Rating</div>
+            <div style="display:flex;gap:6px" id="star-row">
+              <span class="star-btn" data-v="1" style="font-size:26px;cursor:pointer;transition:transform .15s" role="button" aria-label="1 star">⭐</span>
+              <span class="star-btn" data-v="2" style="font-size:26px;cursor:pointer;transition:transform .15s" role="button" aria-label="2 stars">⭐</span>
+              <span class="star-btn" data-v="3" style="font-size:26px;cursor:pointer;transition:transform .15s" role="button" aria-label="3 stars">⭐</span>
+              <span class="star-btn" data-v="4" style="font-size:26px;cursor:pointer;transition:transform .15s" role="button" aria-label="4 stars">⭐</span>
+              <span class="star-btn" data-v="5" style="font-size:26px;cursor:pointer;transition:transform .15s" role="button" aria-label="5 stars">⭐</span>
+            </div>
+            <div style="font-size:11px;color:var(--txt3);margin-top:5px" id="star-msg">Tap a star to rate</div>
+          </div>
+          <input class="inp" id="fb-title" placeholder="Briefly summarise your feedback…"/>
+          <textarea class="inp" id="fb-msg" rows="4" placeholder="Describe in detail…" style="resize:none"></textarea>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface2);border-radius:10px;border:1px solid var(--border)">
+            <div><div style="font-size:13px;font-weight:500;color:var(--txt1)">Submit Anonymously</div><div style="font-size:11px;color:var(--txt3)">Your name won't be attached</div></div>
+            <button class="toggle" id="fb-anon"></button>
+          </div>
+          <button class="btn btn-teal" id="submit-fb-btn" style="width:100%;justify-content:center;padding:12px">Submit Feedback</button>
+        </div>
+      </div>
+      <div class="card"><div class="card-head"><div class="card-title">Your Submissions</div></div><div id="fb-history"></div></div>
+    </div>
+  </div>
+
+  <!-- PAGE: SETTINGS -->
+  <div class="page" id="page-settings">
+    <div class="grad-header grad-settings">
+      <div class="grad-title">⚙ Settings</div>
+      <div class="grad-sub">Profile, accessibility, notifications, and medical information</div>
+    </div>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Profile</div><button class="btn btn-outline btn-sm">Edit</button></div>
+          <div class="card-pad" style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:14px">
+              <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-lt));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--navy-deep)">YS</div>
+              <div><div style="font-size:16px;font-weight:600;color:var(--txt1)">Yug Suhagiya</div><div style="font-size:12px;color:var(--txt3)">B24CS1073 · CSE, IIT Jodhpur</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Medical Information</div></div>
+          <div class="card-pad" style="display:flex;flex-direction:column;gap:8px">
+            <div style="padding:9px 12px;background:var(--rose-lt);border-radius:9px;border-left:3px solid var(--rose)"><div style="font-size:10px;color:var(--rose);font-weight:600">Diagnosis</div><div style="font-size:12px;color:var(--txt1);margin-top:2px">Incomplete Spinal Cord Injury — L2 level</div></div>
+            <div style="padding:9px 12px;background:var(--surface2);border-radius:9px"><div style="font-size:10px;color:var(--txt3);font-weight:600">Medications</div><div style="font-size:12px;color:var(--txt1);margin-top:2px">Baclofen 10mg · Vitamin D 2000IU · Aspirin 75mg</div></div>
+            <div style="padding:9px 12px;background:var(--gold-pale);border-radius:9px"><div style="font-size:10px;color:var(--gold);font-weight:600">Allergies</div><div style="font-size:12px;color:var(--txt1);margin-top:2px">Penicillin · Latex</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card">
+          <div class="card-head"><div class="card-title">♿ Accessibility</div></div>
+          <div class="card-pad">
+            <div class="toggle-wrap"><div><div class="toggle-lbl">High Contrast Mode</div><div class="toggle-desc">Increases contrast for better readability</div></div><button class="toggle" id="t-contrast"></button></div>
+            <div class="toggle-wrap"><div><div class="toggle-lbl">Reduced Motion</div><div class="toggle-desc">Disables animations</div></div><button class="toggle" id="t-motion"></button></div>
+            <div class="toggle-wrap" style="border-bottom:none"><div><div class="toggle-lbl">Dark Mode</div><div class="toggle-desc">Switch to dark colour scheme</div></div><button class="toggle" id="t-dark"></button></div>
+            <div style="margin-top:16px">
+              <div style="font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:8px">Font Size</div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-outline btn-sm" data-size="sm">A-</button>
+                <button class="btn btn-outline btn-sm" data-size="md">A</button>
+                <button class="btn btn-outline btn-sm" data-size="lg">A+</button>
+                <button class="btn btn-outline btn-sm" data-size="xl">A++</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">🔔 Notifications</div></div>
+          <div class="card-pad">
+            <div class="toggle-wrap"><div><div class="toggle-lbl">Physio Reminders</div><div class="toggle-desc">30 min before each session</div></div><button class="toggle notif-toggle on"></button></div>
+            <div class="toggle-wrap"><div><div class="toggle-lbl">Habit Reminders</div><div class="toggle-desc">Daily at 8:00 AM</div></div><button class="toggle notif-toggle on"></button></div>
+            <div class="toggle-wrap" style="border-bottom:none"><div><div class="toggle-lbl">Streak Alerts</div><div class="toggle-desc">Notify if streak at risk</div></div><button class="toggle notif-toggle on"></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 class="modal-title" id="modal-title">Confirm</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-foot" id="modal-foot">
+        <button class="btn btn-outline" id="modal-cancel">Cancel</button>
+        <button class="btn btn-gold" id="modal-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>
+.fb-cat-btn { padding:7px 14px;border-radius:20px;font-size:12px;font-weight:500;border:1.5px solid var(--border);background:var(--inp);color:var(--txt2);cursor:pointer;transition:all var(--tr); }
+.fb-cat-btn:hover { border-color:var(--teal);color:var(--teal); }
+.fb-cat-btn.active { background:var(--teal-lt);border-color:var(--teal);color:var(--teal);font-weight:600; }
+.fb-type-btn { flex:1;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:500;border:1.5px solid var(--border);background:var(--inp);color:var(--txt2);cursor:pointer;transition:all var(--tr); }
+.fb-type-btn.active { background:var(--emerald-lt);border-color:var(--emerald);color:var(--emerald); }
+.fb-type-btn[data-type="negative"].active { background:var(--rose-lt);border-color:var(--rose);color:var(--rose); }
+.fb-type-btn[data-type="suggestion"].active { background:var(--blue-lt);border-color:var(--blue);color:var(--blue); }
+.ex-item { padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all var(--tr);margin-bottom:10px; }
+.ex-item:hover { border-color:var(--emerald);background:var(--emerald-lt); }
+.ex-item.done { opacity:1;border-color:rgba(52,168,83,.45);background:var(--emerald-lt); }
+.ex-check { width:22px;height:22px;border-radius:6px;border:2px solid rgba(52,168,83,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--tr);background:var(--surface);font-size:0;color:transparent;position:relative; }
+.ex-check::after { content:''; }
+.ex-item.done .ex-check { background:var(--emerald);border-color:var(--emerald); }
+.ex-item.done .ex-check::after { content:'✓';font-size:12px;font-weight:700;color:#fff;line-height:1; }
+.ex-name { font-size:13px;font-weight:500;color:var(--txt1); }
+.ex-meta { font-size:11px;color:var(--txt3);margin-top:2px; }
+.hab-item { display:flex;align-items:center;gap:13px;padding:13px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all var(--tr);margin-bottom:9px; }
+.hab-item:hover { border-color:rgba(245,158,11,0.4); }
+.hab-check { width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--tr); }
+.hab-item.done .hab-check { background:var(--amber);border-color:var(--amber);color:#fff;font-weight:700;font-size:12px; }
+.hab-txt { flex:1;font-size:13px;color:var(--txt1); }
+.hab-item.done .hab-txt { color:var(--txt3);text-decoration:line-through; }
+.hab-str { font-size:11px;font-weight:600;color:var(--amber); }
+.donut { width:110px;height:110px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative; }
+.donut-inner { width:72px;height:72px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;position:absolute; }
+.donut-val { font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--txt1); }
+.donut-sub { font-size:9px;color:var(--txt3); }
+</style>
+
+<script type="module" src="scripts/main.js"></script>
+</body>
+</html>
+

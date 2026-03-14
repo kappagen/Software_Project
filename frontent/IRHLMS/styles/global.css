@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-body); background:var(--bg); color:var(--txt1); display:flex; min-height:100vh; overflow:hidden; transition:background var(--tr),color var(--tr); font-size:inherit; line-height:1.5; }
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+button { cursor:pointer; font-family:var(--font-body); border:none; background:none; }
+input,select,textarea { font-family:var(--font-body); outline:none; }
+a { text-decoration:none; color:inherit; }
+img,svg { max-width:100%; display:block; }
+ul,ol { list-style:none; }

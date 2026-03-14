@@ -1,0 +1,9 @@
+.milestone-track { position:relative; padding-left:24px; }
+.milestone-track::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--border); }
+.milestone-item { position:relative; padding-bottom:18px; }
+.milestone-dot { position:absolute; left:-20px; top:4px; width:14px; height:14px; border-radius:50%; border:2px solid var(--surface); box-shadow:0 0 0 2px var(--border); }
+.milestone-dot.done   { background:var(--teal);   box-shadow:0 0 0 2px var(--teal); }
+.milestone-dot.active { background:var(--gold); box-shadow:0 0 0 2px var(--gold); animation:pulse 2s ease-in-out infinite; }
+.milestone-dot.future { background:var(--border); }
+.milestone-txt  { font-size:13px; font-weight:500; color:var(--txt1); }
+.milestone-date { font-size:11px; color:var(--txt3); margin-top:2px; }

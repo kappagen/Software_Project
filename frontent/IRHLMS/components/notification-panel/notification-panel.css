@@ -1,0 +1,12 @@
+.notif-panel { position:fixed; top:60px; right:20px; width:310px; background:var(--surface); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-lg); z-index:var(--z-notif); display:none; animation:pageIn .2s ease; }
+.notif-panel.open { display:block; }
+.np-head { display:flex; align-items:center; justify-content:space-between; padding:14px 18px 12px; border-bottom:1px solid var(--border); }
+.np-title { font-size:14px; font-weight:700; color:var(--txt1); }
+.np-clear { font-size:11px; color:var(--gold); cursor:pointer; background:none; border:none; font-family:var(--font-body); }
+.np-list { list-style:none; }
+.np-item { display:flex; gap:10px; padding:12px 18px; border-bottom:1px solid var(--border); transition:background var(--tr); }
+.np-item:hover { background:var(--surface2); }
+.np-item:last-child { border-bottom:none; }
+.np-ico { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.np-msg { font-size:12px; color:var(--txt1); line-height:1.5; }
+.np-time { font-size:10px; color:var(--txt3); margin-top:3px; }

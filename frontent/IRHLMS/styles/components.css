@@ -1,0 +1,627 @@
+.card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); transition:box-shadow var(--tr),border-color var(--tr),background var(--tr); }
+.card:hover { box-shadow:var(--shadow-md); }
+.card-pad { padding: 20px 22px; }
+.card-head { display:flex; align-items:center; justify-content:space-between; padding:16px 22px; border-bottom:1px solid var(--border); }
+.card-title { font-family:var(--font-display); font-size:15px; font-weight:600; color:var(--txt1); }
+.card-sub { font-size:11px; color:var(--txt3); margin-top:2px; }
+.badge { display:inline-flex; align-items:center; gap:4px; padding:3px 9px; border-radius:var(--radius-full); font-size:11px; font-weight:600; }
+.badge-gold{background:var(--gold-pale);color:var(--gold)} .badge-teal{background:var(--teal-lt);color:var(--teal)} .badge-violet{background:var(--violet-lt);color:var(--violet)} .badge-amber{background:var(--amber-lt);color:var(--amber)} .badge-rose{background:var(--rose-lt);color:var(--rose)} .badge-green{background:var(--emerald-lt);color:var(--emerald)} .badge-blue{background:var(--blue-lt);color:var(--blue)}
+.btn { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; border-radius:var(--radius-md); font-size:13px; font-weight:600; border:none; cursor:pointer; transition:all var(--tr); }
+.btn-gold { background:linear-gradient(135deg,var(--gold),var(--gold-lt)); color:var(--navy-deep); box-shadow:0 2px 12px rgba(234,172,87,.30); }
+.btn-gold:hover { box-shadow:0 4px 20px rgba(234,172,87,.45); transform:translateY(-1px); }
+.btn-outline { background:transparent; border:1px solid var(--border); color:var(--txt2); }
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+.btn-teal { background:var(--teal); color:#fff; }
+.btn-violet { background:var(--violet); color:#fff; }
+.btn-teal:hover,.btn-violet:hover { filter:brightness(1.08); transform:translateY(-1px); }
+.btn-sm { padding:6px 13px; font-size:12px; }
+.inp { width:100%; padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--inp); color:var(--txt1); font-size:13px; transition:border-color var(--tr),background var(--tr); }
+.inp:focus { border-color:var(--gold); background:var(--surface); }
+.inp::placeholder { color:var(--txt3); }
+.sel { padding:9px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--inp); color:var(--txt2); font-size:13px; cursor:pointer; transition:border-color var(--tr); }
+.sel:focus { border-color:var(--gold); }
+.prog-bg { height:8px; background:var(--border); border-radius:4px; overflow:hidden; }
+.prog-fill { height:100%; border-radius:4px; transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+.toggle { width:42px; height:24px; border-radius:var(--radius-full); background:var(--border); position:relative; cursor:pointer; transition:background var(--tr); border:none; flex-shrink:0; }
+.toggle.on { background:var(--teal); }
+.toggle::after { content:''; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:left var(--tr); }
+.toggle.on::after { left:21px; }
+.toggle-wrap { display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border); }
+.toggle-lbl { font-size:13px; color:var(--txt1); font-weight:500; }
+.toggle-desc { font-size:11px; color:var(--txt3); margin-top:2px; }
+.stat-ico { width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.ic-teal{background:var(--teal-lt)} .ic-gold{background:var(--gold-pale)} .ic-violet{background:var(--violet-lt)} .ic-amber{background:var(--amber-lt)} .ic-rose{background:var(--rose-lt)} .ic-green{background:var(--emerald-lt)} .ic-blue{background:var(--blue-lt)}
+.tabs { display:flex; gap:4px; background:var(--inp); border-radius:var(--radius-md); padding:4px; margin-bottom:18px; }
+.tab-btn { flex:1; padding:8px 14px; border-radius:var(--radius-sm); border:none; background:transparent; color:var(--txt2); font-size:13px; font-weight:500; cursor:pointer; transition:all var(--tr); }
+.tab-btn.active { background:var(--surface); color:var(--txt1); box-shadow:var(--shadow); }
+
+.courses-summary-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-bottom:20px; }
+.course-summary-card { padding:14px 16px; display:flex; align-items:center; gap:12px; border-radius:18px; border:1px solid rgba(124,92,191,.22); background:linear-gradient(180deg,var(--surface),var(--violet-lt)); }
+.course-summary-icon { width:44px; height:44px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:var(--txt1); flex-shrink:0; }
+.course-summary-icon.cs-violet { background:var(--violet-lt); color:var(--violet); }
+.course-summary-icon.cs-gold { background:var(--violet-lt); color:var(--violet); }
+.course-summary-icon.cs-rose { background:var(--violet-lt); color:var(--violet); }
+.course-summary-icon.cs-green { background:var(--violet-lt); color:var(--violet); }
+.course-summary-label { font-size:11px; color:var(--txt3); font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+.course-summary-value { font-size:22px; line-height:1; margin-top:3px; font-weight:700; color:var(--violet); }
+
+.courses-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.course-card { border-radius:20px; overflow:hidden; }
+.course-card-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:20px 20px 16px; border-bottom:1px solid var(--border); }
+.course-icon { width:56px; height:56px; border-radius:15px; display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff; flex-shrink:0; box-shadow:inset 0 0 0 1px rgba(255,255,255,.2); }
+.course-icon.violet { background:linear-gradient(135deg,var(--violet),#9474d8); }
+.course-icon.orange { background:linear-gradient(135deg,var(--violet),#9a7be2); }
+.course-icon.green { background:linear-gradient(135deg,var(--violet),#8a6fd4); }
+.course-icon.neutral { background:linear-gradient(135deg,var(--violet),#a98be8); }
+.course-status { display:inline-flex; align-items:center; justify-content:center; padding:6px 12px; border-radius:999px; font-size:13px; font-weight:700; }
+.course-status.active { color:var(--violet); background:var(--violet-lt); }
+.course-status.progress { color:var(--violet); background:rgba(124,92,191,.16); }
+.course-status.complete { color:var(--violet); background:rgba(124,92,191,.22); }
+.course-status.done { color:var(--violet); background:rgba(124,92,191,.28); }
+.course-card-body { padding:20px; display:flex; flex-direction:column; gap:14px; }
+.course-title { font-size:22px; line-height:1.2; font-weight:700; color:var(--txt1); margin:0; }
+.course-meta { color:var(--txt3); font-size:12px; line-height:1.45; }
+.course-progress-label { display:flex; justify-content:space-between; align-items:center; color:var(--txt2); font-size:12px; font-weight:600; margin-bottom:8px; }
+.course-progress-val { font-weight:700; }
+.course-progress-track { height:12px; border-radius:999px; background:var(--border); overflow:hidden; }
+.course-progress-fill { height:100%; border-radius:999px; transition:width .7s ease; }
+.course-progress-fill.active { background:linear-gradient(90deg,var(--violet),#9f81df); }
+.course-progress-fill.progress { background:linear-gradient(90deg,var(--violet),#9f81df); }
+.course-progress-fill.complete { background:linear-gradient(90deg,var(--violet),#9f81df); }
+.course-progress-fill.done { background:linear-gradient(90deg,var(--violet),#9f81df); }
+.course-metrics { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.course-metric { background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:11px 12px; text-align:center; }
+.course-metric-label { font-size:11px; color:var(--txt3); font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+.course-metric-value { margin-top:4px; font-size:20px; font-weight:700; color:var(--txt1); line-height:1; }
+.course-metric-value.good { color:var(--violet); }
+.course-tags { display:flex; gap:8px; flex-wrap:wrap; }
+.course-tag { border-radius:999px; padding:5px 12px; font-size:11px; font-weight:600; background:var(--violet-lt); color:var(--violet); }
+.course-actions { display:flex; justify-content:flex-end; }
+.course-remove { border:none; background:transparent; color:var(--violet); font-size:12px; font-weight:600; cursor:pointer; }
+.course-remove:hover { text-decoration:underline; }
+
+.assignment-list { display:flex; flex-direction:column; gap:8px; }
+.assignment-item { display:flex; align-items:flex-start; gap:10px; border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--surface2); }
+.assignment-item.done { opacity:.7; background:var(--violet-lt); }
+.assignment-check { margin-top:2px; accent-color:var(--violet); width:16px; height:16px; }
+.assignment-main { flex:1; min-width:0; }
+.assignment-title { font-size:13px; font-weight:600; color:var(--txt1); line-height:1.3; }
+.assignment-item.done .assignment-title { text-decoration:line-through; }
+.assignment-meta { font-size:11px; color:var(--txt3); margin-top:2px; }
+.assignment-chip { font-size:10px; font-weight:700; padding:3px 8px; border-radius:999px; background:var(--violet-lt); color:var(--violet); }
+.assignment-chip.done { background:rgba(124,92,191,.25); }
+.assignment-activity { display:flex; flex-direction:column; gap:8px; }
+.assignment-activity-item { border:1px solid var(--border); border-radius:10px; padding:10px 12px; background:var(--surface2); }
+.assignment-activity-msg { font-size:12px; color:var(--txt1); }
+.assignment-activity-time { font-size:10px; color:var(--txt3); margin-top:3px; }
+
+#page-physio .card {
+  border-color: rgba(52, 168, 83, 0.28);
+  box-shadow: 0 4px 18px rgba(52, 168, 83, 0.10);
+}
+#page-physio .card-head {
+  background: linear-gradient(180deg, var(--emerald-lt), rgba(52, 168, 83, 0.04));
+}
+#page-physio .btn-gold {
+  background: linear-gradient(135deg, var(--emerald), #63c77d);
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(52, 168, 83, 0.32);
+}
+#page-physio .btn-gold:hover {
+  box-shadow: 0 6px 22px rgba(52, 168, 83, 0.38);
+}
+#page-physio .btn-outline {
+  border-color: rgba(52, 168, 83, 0.44);
+  color: var(--emerald);
+}
+#page-physio .btn-outline:hover {
+  border-color: var(--emerald);
+  color: #fff;
+  background: var(--emerald);
+}
+#page-physio .inp:focus {
+  border-color: var(--emerald);
+}
+#page-physio .ex-item:hover {
+  border-color: var(--emerald);
+  background: var(--emerald-lt);
+}
+#page-physio .ex-item.done .ex-check {
+  background: var(--emerald);
+  border-color: var(--emerald);
+}
+#page-physio .time-picker-trigger:hover {
+  color: var(--emerald);
+  border-color: var(--emerald);
+}
+#page-physio .time-picker-display {
+  background: linear-gradient(135deg, #0f3b1f, var(--emerald));
+}
+#page-physio .time-picker-item:hover {
+  background: rgba(52, 168, 83, 0.14);
+  color: var(--emerald);
+}
+#page-physio .time-picker-item.active {
+  background: var(--emerald-lt);
+  color: var(--emerald);
+}
+
+#page-habits .card {
+  border-color: rgba(245, 158, 11, 0.28);
+}
+#page-habits .sec-lbl {
+  color: #9a6d2f;
+}
+#page-habits .hab-item {
+  border-color: rgba(245, 158, 11, 0.24);
+  background: linear-gradient(180deg, var(--surface), rgba(241, 218, 114, 0.06));
+}
+#page-habits .hab-item:hover {
+  border-color: rgba(245, 158, 11, 0.50);
+  background: var(--amber-lt);
+}
+#page-habits .hab-check {
+  border-color: rgba(245, 158, 11, 0.45);
+}
+#page-habits .hab-item.done {
+  border-color: rgba(245, 158, 11, 0.60);
+  background: linear-gradient(180deg, rgba(241, 218, 114, 0.30), rgba(241, 218, 114, 0.16));
+}
+#page-habits .hab-item.done .hab-check {
+  background: var(--amber);
+  border-color: var(--amber);
+}
+#page-habits .hab-item.done .hab-txt {
+  color: #8b4c00;
+  text-decoration: none;
+}
+#page-habits #new-hab-inp:focus,
+#page-habits #new-hab-cat:focus {
+  border-color: var(--amber);
+}
+#page-habits .habit-filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+#page-habits .habit-filter-btn {
+  border: 1px solid rgba(245, 158, 11, 0.34);
+  background: rgba(241, 218, 114, 0.16);
+  color: #8b4c00;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tr);
+}
+#page-habits .habit-filter-btn:hover {
+  border-color: rgba(245, 158, 11, 0.64);
+  background: rgba(241, 218, 114, 0.30);
+}
+#page-habits .habit-filter-btn.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+}
+#page-habits .habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#page-habits .hab-item {
+  margin-bottom: 0;
+}
+#page-habits .hab-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--txt1);
+}
+#page-habits .hab-meta-line {
+  display: flex;
+  gap: 7px;
+  margin-top: 4px;
+  align-items: center;
+}
+#page-habits .hab-cat-pill,
+#page-habits .hab-points {
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+#page-habits .hab-cat-pill {
+  color: #8b4c00;
+  background: rgba(241, 218, 114, 0.26);
+  border: 1px solid rgba(245, 158, 11, 0.26);
+}
+#page-habits .hab-points {
+  color: #8b4c00;
+  background: rgba(241, 218, 114, 0.16);
+  border: 1px dashed rgba(245, 158, 11, 0.30);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+#page-habits .hab-item.done .hab-name {
+  color: #8b4c00;
+  text-decoration: line-through;
+}
+#page-habits .hab-item.done .hab-cat-pill,
+#page-habits .hab-item.done .hab-points {
+  background: rgba(245, 158, 11, 0.26);
+  border-color: rgba(245, 158, 11, 0.50);
+}
+#page-habits .hab-fire-inline {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  opacity: 0.72;
+  transition: opacity var(--tr), transform var(--tr), filter var(--tr);
+}
+#page-habits .hab-item.done .hab-fire-inline {
+  opacity: 1;
+  transform: scale(1.08);
+  filter: saturate(1.2);
+}
+#page-habits .hab-empty {
+  font-size: 12px;
+  color: var(--txt3);
+  padding: 10px 2px;
+}
+
+.physio-log-card { overflow:visible; }
+.physio-log-card .card-pad { overflow:visible; }
+.time-picker { position:relative; }
+.time-picker-input { padding-right:42px; }
+.time-picker-trigger {
+  position:absolute; top:50%; right:8px; transform:translateY(-50%);
+  width:24px; height:24px; border:1px solid var(--border); border-radius:7px;
+  background:var(--surface2); color:var(--txt2); cursor:pointer; display:flex; align-items:center; justify-content:center;
+}
+.time-picker-trigger:hover { color:var(--violet); border-color:var(--violet); }
+.time-picker-panel {
+  position:absolute; top:calc(100% + 8px); left:0; width:240px;
+  border:1px solid var(--border); border-radius:12px; background:var(--surface);
+  box-shadow:var(--shadow-lg); padding:6px; display:none; z-index:350;
+}
+.time-picker-panel.open { display:block; }
+.time-picker-display {
+  background:var(--navy-deep); color:#fff; border-radius:10px; padding:10px 12px;
+  font-family:var(--font-display); font-size:16px; letter-spacing:.04em;
+}
+.time-picker-grid { display:grid; grid-template-columns:1fr 1fr .9fr; gap:5px; margin-top:6px; }
+.time-picker-col { border:1px solid var(--border); border-radius:8px; background:var(--surface2); max-height:150px; overflow:auto; padding:2px; }
+.time-picker-item {
+  width:100%; border:none; border-radius:6px; background:transparent; color:var(--txt1);
+  padding:5px 4px; text-align:center; font-size:12px; cursor:pointer;
+}
+.time-picker-item:hover { background:rgba(124,92,191,.10); color:var(--violet); }
+.time-picker-item.active { background:var(--violet-lt); color:var(--violet); font-weight:700; }
+
+#page-therapy .grad-therapy {
+  background: linear-gradient(120deg, #6f1b36, #c55570);
+  box-shadow: 0 10px 30px rgba(111, 27, 54, 0.24);
+}
+#page-therapy .therapy-hero {
+  border-radius: 24px;
+  padding: 30px 34px;
+}
+#page-therapy .therapy-hero::after {
+  width: 170px;
+  height: 170px;
+  right: -22px;
+  top: -22px;
+  background: rgba(255, 255, 255, 0.10);
+}
+#page-therapy .therapy-hero-meta strong {
+  color: #fff;
+  font-size: 17px;
+  line-height: 1;
+}
+#page-therapy .therapy-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 20px;
+}
+#page-therapy .therapy-col .sec-lbl {
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #8f9fb1;
+}
+#page-therapy .therapy-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#page-therapy .therapy-col-head .btn-violet,
+#page-therapy .therapy-add-doctor-form .btn-violet {
+  background: linear-gradient(135deg, var(--rose), #d86d84);
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(224, 84, 112, 0.28);
+}
+#page-therapy .therapy-col-head .btn-violet:hover,
+#page-therapy .therapy-add-doctor-form .btn-violet:hover {
+  box-shadow: 0 6px 22px rgba(224, 84, 112, 0.35);
+  transform: translateY(-1px);
+}
+#page-therapy .therapy-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+#page-therapy .therapy-add-doctor-card {
+  border-color: rgba(224, 84, 112, 0.32);
+}
+#page-therapy .therapy-add-doctor-card .card-head {
+  background: linear-gradient(180deg, var(--rose-lt), rgba(224, 84, 112, 0.05));
+}
+#page-therapy .therapy-add-doctor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#page-therapy .therapy-add-doctor-form .inp:focus {
+  border-color: var(--rose);
+}
+#page-therapy .therapy-add-doctor-form .btn-outline:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+#page-therapy .therapy-add-doctor-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+#page-therapy .therapy-session-card {
+  padding: 20px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(224, 84, 112, 0.20);
+  background: linear-gradient(180deg, var(--surface), rgba(224, 84, 112, 0.02));
+  box-shadow: 0 8px 24px rgba(28, 39, 51, 0.08);
+}
+#page-therapy .therapy-session-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+#page-therapy .therapy-session-title {
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--txt1);
+  margin: 0;
+}
+#page-therapy .therapy-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+#page-therapy .therapy-status.confirmed {
+  color: #b54461;
+  background: rgba(224, 84, 112, 0.16);
+}
+#page-therapy .therapy-status.pending {
+  color: #975766;
+  background: rgba(224, 84, 112, 0.10);
+}
+#page-therapy .therapy-session-meta {
+  margin-top: 8px;
+  color: var(--txt3);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#page-therapy .therapy-session-goals {
+  margin-top: 10px;
+  color: var(--txt2);
+  font-size: 14px;
+  line-height: 1.55;
+}
+#page-therapy .therapy-session-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--txt3);
+  background: rgba(224, 84, 112, 0.06);
+  border: 1px dashed rgba(224, 84, 112, 0.24);
+  border-radius: 10px;
+  padding: 8px 10px;
+  line-height: 1.45;
+}
+#page-therapy .therapy-session-note.has-note {
+  color: #8f4357;
+  border-style: solid;
+}
+#page-therapy .therapy-note-editor {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(224, 84, 112, 0.24);
+  border-radius: 12px;
+  background: rgba(224, 84, 112, 0.04);
+}
+#page-therapy .therapy-note-actions {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+#page-therapy .therapy-note-save {
+  background: linear-gradient(135deg, var(--rose), #d86d84);
+  color: #fff;
+  border: none;
+}
+#page-therapy .therapy-note-save:hover {
+  filter: brightness(1.05);
+}
+#page-therapy .therapy-reschedule-editor {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(224, 84, 112, 0.24);
+  border-radius: 12px;
+  background: rgba(224, 84, 112, 0.04);
+}
+#page-therapy .therapy-reschedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+#page-therapy .therapy-reschedule-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#page-therapy .therapy-reschedule-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9a4b64;
+}
+#page-therapy .therapy-reschedule-input {
+  border-color: rgba(224, 84, 112, 0.38);
+  background: linear-gradient(180deg, rgba(224, 84, 112, 0.08), rgba(224, 84, 112, 0.03));
+}
+#page-therapy .therapy-reschedule-input:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(224, 84, 112, 0.16);
+}
+#page-therapy .therapy-reschedule-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.9;
+  filter: hue-rotate(308deg) saturate(1.15);
+}
+#page-therapy .therapy-reschedule-editor .inp:focus,
+#page-therapy .therapy-reschedule-editor .sel:focus {
+  border-color: var(--rose);
+}
+#page-therapy .therapy-session-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+#page-therapy .therapy-confirm-btn {
+  border-color: rgba(224, 84, 112, 0.40);
+  color: var(--rose);
+}
+#page-therapy .therapy-confirm-btn:not(:disabled):hover {
+  border-color: var(--rose);
+  background: var(--rose-lt);
+}
+#page-therapy .therapy-confirm-btn.is-confirmed {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+#page-therapy .therapy-delete-btn {
+  border-color: rgba(181, 68, 97, 0.36);
+  color: #b54461;
+}
+#page-therapy .therapy-delete-btn:hover {
+  border-color: #b54461;
+  background: rgba(224, 84, 112, 0.10);
+  color: #9f2f50;
+}
+#page-therapy .therapy-doctor-card {
+  border-radius: 18px;
+  padding: 17px 20px;
+  border: 1px solid rgba(224, 84, 112, 0.20);
+  background: linear-gradient(180deg, var(--surface), rgba(224, 84, 112, 0.03));
+  box-shadow: 0 8px 22px rgba(28, 39, 51, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+#page-therapy .therapy-doctor-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+  flex: 1;
+}
+#page-therapy .therapy-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+#page-therapy .therapy-avatar.tone-rose { background: linear-gradient(135deg, #d26c84, #bf4d70); }
+#page-therapy .therapy-avatar.tone-blue { background: linear-gradient(135deg, #cb7f97, #b45e78); }
+#page-therapy .therapy-avatar.tone-violet { background: linear-gradient(135deg, #c96e8a, #ad4e68); }
+#page-therapy .therapy-avatar.tone-teal { background: linear-gradient(135deg, #dc8aa0, #bf637e); }
+#page-therapy .therapy-avatar.tone-amber { background: linear-gradient(135deg, #d17a94, #b25572); }
+#page-therapy .therapy-doctor-name {
+  font-size: 16px;
+  color: var(--txt1);
+  line-height: 1.3;
+}
+#page-therapy .therapy-doctor-spec {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--txt3);
+}
+#page-therapy .therapy-doctor-qual {
+  margin-top: 1px;
+  font-size: 12px;
+  color: var(--txt2);
+}
+#page-therapy .therapy-doctor-note {
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--txt3);
+  line-height: 1.45;
+}
+#page-therapy .therapy-book-btn {
+  min-width: 80px;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--rose), #d86d84);
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(224, 84, 112, 0.28);
+}
+#page-therapy .therapy-book-btn:hover {
+  box-shadow: 0 6px 22px rgba(224, 84, 112, 0.35);
+  transform: translateY(-1px);
+}
+
+@media(max-width:1440px) {
+  .courses-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:1100px) {
+  .courses-summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .course-title { font-size:20px; }
+  #page-therapy .therapy-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:800px) {
+  .courses-summary-grid,.courses-grid { grid-template-columns:1fr; }
+  .course-title { font-size:18px; }
+  .time-picker-panel { width:min(220px,calc(100vw - 70px)); }
+  #page-therapy .therapy-hero { padding: 24px 20px; border-radius: 20px; }
+  #page-therapy .therapy-session-card,
+  #page-therapy .therapy-doctor-card { padding: 16px; border-radius: 16px; }
+  #page-therapy .therapy-session-head { flex-direction: column; align-items: flex-start; }
+  #page-therapy .therapy-session-actions { gap: 8px; }
+  #page-therapy .therapy-add-doctor-actions { flex-direction: column; align-items: stretch; }
+  #page-therapy .therapy-reschedule-grid { grid-template-columns: 1fr; }
+  #page-therapy .therapy-doctor-card { flex-direction: column; align-items: stretch; }
+  #page-therapy .therapy-col-head { align-items: stretch; }
+  #page-therapy #therapy-add-doctor-trigger { width: 100%; justify-content: center; }
+  #page-therapy .therapy-book-btn { min-width: 72px; }
+}

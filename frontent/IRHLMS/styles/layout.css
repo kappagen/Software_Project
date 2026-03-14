@@ -1,0 +1,13 @@
+.main { margin-left:230px; flex:1; display:flex; flex-direction:column; max-height:100vh; overflow-y:auto; transition:margin-left var(--tr); }
+.page { display:none; padding:26px 28px; animation:pageIn .28s ease; }
+.page.active { display:block; }
+@keyframes pageIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.sec-lbl { font-size:11px; font-weight:700; letter-spacing:.10em; text-transform:uppercase; color:var(--txt3); margin-bottom:12px; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 2px var(--gold),0 0 0 4px rgba(234,172,87,0.3)} 50%{box-shadow:0 0 0 2px var(--gold),0 0 0 8px rgba(234,172,87,0.1)} }
+@keyframes flicker { 0%,100%{transform:scale(1) rotate(-3deg)} 50%{transform:scale(1.1) rotate(3deg)} }
+@media(max-width:1100px) { .grid-4{grid-template-columns:repeat(2,1fr)} .grid-3{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:800px) { .sidebar{transform:translateX(-100%)} .main{margin-left:0} .grid-2,.grid-3,.grid-4{grid-template-columns:1fr} .page{padding:16px} }
