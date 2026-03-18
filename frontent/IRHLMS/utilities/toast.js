@@ -1,18 +1,31 @@
-﻿let _container = null;
-function _getContainer() {
-  if (!_container) {
-    _container = Object.assign(document.createElement('div'), {
-      style: 'position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:8px;z-index:9999;pointer-events:none'
+let container = null;
+
+function getContainer() {
+  if (!container) {
+    container = Object.assign(document.createElement('div'), {
+      style:
+        'position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:8px;z-index:9999;pointer-events:none'
     });
-    document.body.appendChild(_container);
+    document.body.appendChild(container);
   }
-  return _container;
+  return container;
 }
 
-function _show(msg, { bg = 'var(--navy)', color = '#fff', icon = '' } = {}) {
-  const t = document.createElement('div');
-  t.innerHTML = `<span style="font-size:11px;font-weight:700;letter-spacing:.04em">${icon}</span> ${msg}`;
-  Object.assign(t.style, {
+function show(msg, { bg = 'var(--navy)', color = '#fff', icon = '' } = {}) {
+  const toast = document.createElement('div');
+  const iconEl = document.createElement('span');
+  const msgEl = document.createElement('span');
+
+  iconEl.textContent = String(icon);
+  msgEl.textContent = String(msg);
+
+  Object.assign(iconEl.style, {
+    fontSize: '11px',
+    fontWeight: '700',
+    letterSpacing: '.04em'
+  });
+
+  Object.assign(toast.style, {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
@@ -30,17 +43,20 @@ function _show(msg, { bg = 'var(--navy)', color = '#fff', icon = '' } = {}) {
     pointerEvents: 'auto',
     maxWidth: '300px'
   });
-  _getContainer().appendChild(t);
+
+  toast.append(iconEl, msgEl);
+  getContainer().appendChild(toast);
+
   setTimeout(() => {
-    t.style.opacity = '0';
-    setTimeout(() => t.remove(), 300);
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
   }, 3200);
 }
 
 export const Toast = {
-  show: (msg, opts) => _show(msg, opts),
-  success: (msg) => _show(msg, { bg: 'var(--teal)', icon: 'OK' }),
-  error: (msg) => _show(msg, { bg: 'var(--rose)', icon: 'ERR' }),
-  info: (msg) => _show(msg, { bg: 'var(--blue)', icon: 'INFO' }),
-  warning: (msg) => _show(msg, { bg: 'var(--amber)', icon: 'WARN', color: 'var(--navy-deep)' })
+  show: (msg, opts) => show(msg, opts),
+  success: (msg) => show(msg, { bg: 'var(--teal)', icon: 'OK' }),
+  error: (msg) => show(msg, { bg: 'var(--rose)', icon: 'ERR' }),
+  info: (msg) => show(msg, { bg: 'var(--blue)', icon: 'INFO' }),
+  warning: (msg) => show(msg, { bg: 'var(--amber)', icon: 'WARN', color: 'var(--navy-deep)' })
 };

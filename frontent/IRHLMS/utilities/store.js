@@ -14,6 +14,7 @@ export class Store {
   }
 
   update(key, updater) {
+    if (typeof updater !== 'function') return;
     this.set(key, updater(structuredClone(this._state[key])));
   }
 

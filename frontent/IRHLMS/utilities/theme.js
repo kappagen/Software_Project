@@ -1,10 +1,17 @@
-﻿export class ThemeManager {
+const STORAGE_KEYS = {
+  theme: 'irhlms-theme',
+  contrast: 'irhlms-contrast',
+  fontSize: 'irhlms-fontsize',
+  motion: 'irhlms-motion'
+};
+
+export class ThemeManager {
   constructor() {
     this._root = document.documentElement;
-    this._theme = localStorage.getItem('irhlms-theme') || 'light';
-    this._contrast = localStorage.getItem('irhlms-contrast') || 'normal';
-    this._fontSize = localStorage.getItem('irhlms-fontsize') || 'md';
-    this._motion = localStorage.getItem('irhlms-motion') || 'normal';
+    this._theme = this._read(STORAGE_KEYS.theme, 'light');
+    this._contrast = this._read(STORAGE_KEYS.contrast, 'normal');
+    this._fontSize = this._read(STORAGE_KEYS.fontSize, 'md');
+    this._motion = this._read(STORAGE_KEYS.motion, 'normal');
     this._bound = false;
   }
 
@@ -16,7 +23,7 @@
 
   toggle() {
     this._theme = this._theme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('irhlms-theme', this._theme);
+    this._write(STORAGE_KEYS.theme, this._theme);
     this._root.setAttribute('data-theme', this._theme);
     this._syncControls();
   }
@@ -26,21 +33,21 @@
     if (!allowed.has(size)) return;
 
     this._fontSize = size;
-    localStorage.setItem('irhlms-fontsize', size);
+    this._write(STORAGE_KEYS.fontSize, size);
     this._root.setAttribute('data-fontsize', size);
     this._syncControls();
   }
 
   setContrast(high) {
     this._contrast = high ? 'high' : 'normal';
-    localStorage.setItem('irhlms-contrast', this._contrast);
+    this._write(STORAGE_KEYS.contrast, this._contrast);
     this._root.setAttribute('data-contrast', this._contrast);
     this._syncControls();
   }
 
   setMotion(reduced) {
     this._motion = reduced ? 'reduce' : 'normal';
-    localStorage.setItem('irhlms-motion', this._motion);
+    this._write(STORAGE_KEYS.motion, this._motion);
     this._root.setAttribute('data-motion', this._motion);
     this._root.style.setProperty('--tr', reduced ? '0s' : '0.22s cubic-bezier(.4,0,.2,1)');
     this._syncControls();
@@ -51,7 +58,10 @@
     this._root.setAttribute('data-contrast', this._contrast);
     this._root.setAttribute('data-fontsize', this._fontSize);
     this._root.setAttribute('data-motion', this._motion);
-    this._root.style.setProperty('--tr', this._motion === 'reduce' ? '0s' : '0.22s cubic-bezier(.4,0,.2,1)');
+    this._root.style.setProperty(
+      '--tr',
+      this._motion === 'reduce' ? '0s' : '0.22s cubic-bezier(.4,0,.2,1)'
+    );
   }
 
   _syncControls() {
@@ -92,5 +102,22 @@
     });
 
     this._bound = true;
+  }
+
+  _read(key, fallback) {
+    try {
+      const value = localStorage.getItem(key);
+      return value || fallback;
+    } catch {
+      return fallback;
+    }
+  }
+
+  _write(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      // Ignore storage errors and keep app functional.
+    }
   }
 }
